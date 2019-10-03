@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
 public class MyLoginActivity extends AppCompatActivity {
 
     @Override
@@ -33,6 +35,15 @@ public class MyLoginActivity extends AppCompatActivity {
                 editor.putString("id", userid);
                 editor.putString("pw", userpw);
                 editor.commit();
+
+                UserVO vo = new UserVO(userid, userpw);
+
+                // 객체 저장
+                Gson gson = new Gson();
+                String json = gson.toJson(vo);
+                editor.putString("vo", json);
+                editor.commit();
+
 
                 Intent intent = new Intent();
                 ComponentName componentName = new ComponentName("com.example.savepreferencesapplication","com.example.savepreferencesapplication.MainActivity");
