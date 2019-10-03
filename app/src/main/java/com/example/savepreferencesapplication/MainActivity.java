@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(preferences.getString("id", "NO"));
 
         // 객체 가져오기
-        Gson gson = new Gson();
         String json = preferences.getString("vo", "");
+        Gson gson = new Gson();
         UserVO vo = gson.fromJson(json, UserVO.class);
 
         Toast.makeText(getApplicationContext(), preferences.getString("pw", "NO"), Toast.LENGTH_SHORT).show();
