@@ -68,7 +68,14 @@
 
   <br>
 
+- 저장할 수 있는 데이터 타입
+  - Boolean
+  - Integer
+  - Float
+  - Long
+  - String
 
+<br>
 
 ### 사용자 정보 가져오기
 
@@ -82,9 +89,13 @@
 
 - 저장 시 설정한 "key" 를 이용해 해당 "key"에 대한 사용자 정보를 가져온다. 만약, 아무값도 들어있지 않으면 "NO"를 반환한다.
 
-  ```java
-  preferences.getString("id", "NO")
-  ```
+  - 첫번 째 인자로 가져올 데이터의 "key"를 제공한다.
+
+  - 두번 째 인자로 가져올 데이터의 "key"에 값이 없을 경우 반환할 값을 넣어준다.
+
+    ```java
+    String a = preferences.getString("id", "NO");
+    ```
 
   <br>
 
@@ -92,5 +103,45 @@
 
 ### 사용자 정보 삭제하기
 
-- 
+- SharedPreferences를 파일 이름, 기본모드로 설정한다.
+
+  ```java
+  SharedPreferences preferences = getSharedPreferences("preferences", MODE_PRIVATE);
+  ```
+
+  <br>
+
+- 사용자 정보를 삭제하기 위해 Editor를 생성한다.
+
+  ```
+  SharedPreferences.Editor editor = preferences.edit();
+  ```
+
+  <br>
+
+  - 특정 사용자 정보 삭제
+
+    - 주어진 "key"에 대한 사용자 정보를 삭제한다.
+
+      ```java
+      editor.remove("id");
+      ```
+
+    <br>
+
+  - 모든 사용자 정보 삭제
+
+    ```java
+    editor.clear();
+    ```
+
+    <br>
+
+- 커밋하여 최종 삭제를 완료한다.
+
+  ```
+  editor.commit();
+  ```
+
+  <br>
 
